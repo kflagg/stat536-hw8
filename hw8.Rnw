@@ -1,0 +1,67 @@
+\documentclass[11pt]{article}
+\usepackage{fullpage,graphicx,float,amsmath,enumitem,hyperref}
+\setlist{parsep=5.5pt}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{\baselineskip}
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\lhead{Time Series HW 8}
+\rhead{Allison Theobold, Andrea Mack, and Kenny Flagg}
+\setlength{\headheight}{18pt}
+\setlength{\headsep}{2pt}
+
+\title{Time Series HW 8}
+\author{Allison Theobold, Andrea Mack, and Kenny Flagg}
+\date{November 29, 2016}
+
+\begin{document}
+\maketitle
+
+<<setup, echo = FALSE, message = FALSE, cache = FALSE>>=
+library(knitr)
+opts_chunk$set(echo = FALSE, comment = NA, fig.align = "center",
+               fig.width = 6.5, fig.height = 4, fig.pos = "H",
+               size = "footnotesize", dev = "pdf",
+               dev.args = list(pointsize = 11))
+knit_theme$set("print")
+
+library(xtable)
+options(xtable.table.placement = "H", xtable.caption.placement = "top",
+        width = 80, scipen = 1, show.signif.stars = FALSE)
+@
+
+{\it Read Monserud and Marshall (2001) ``Time-series analysis of...'' All answers to the following should be short even though the paper is long and contains a lot of information. It ends up introducing concepts that we will spend the rest of the semester digging into and does that pretty well. Focus on the statistical methods employed, reasons for using them, and how they discuss their results.
+This should be done in groups of up to 3. You will lose 2\% if you do not work in a group of 2 and get a bonus of 2\% if you work in a group of 3.}
+
+\begin{enumerate}
+
+\item%1
+{\it What do they provide for a reason for removing the quadratic trend? Why do they want to use a trend model with limited flexibility?}
+
+\item%2
+{\it How do they determine the order of the trend model from none to quadratic? Are there any potential criticisms of the way they do this? Do not discuss the potential issue with doing these tests without accounting for potential autocorrelation -- we know that the SEs would change if these tests were conducted using models that account for autocorrelation.}
+
+\item%3
+{\it Figure 3 contains two ACF plots. Discuss the patterns in the two SACFs (left two panels of Figure 3).}
+
+\item%4
+{\it Note that their bounds for testing in Figure 3 are different from the formula provided in the book -- we will discuss the modification I think they used later. What is the sample size (length of time series!) for the mean douglas-fir and mean western white pine time series. Based on these sample sizes, what cut-offs would you plot on Figure 3 based on the approximate result we discussed in class? How do theirs differ?}
+
+\item%5
+{\it We discussed four different reasons for doing time series modeling at the beginning of the semester (pages 1 and 2 of lecture notes). Of those four reasons, which one does their use of ARMA models fall into and why? There may be multiple choices that are reasonable here, so the argument you make is important. I am not talking about what you could do with their models, just what they did do with them and their reason for employing them.}
+
+\item%6
+{\it Use \texttt{arima.sim} to simulate from Delta response AR(2) models for either the mean D or mean W discussed in Table 4 generating the same number of observations as in their time series (see Table 2). You can use a standard deviation for the white noise process of 0.4. This simulation is just concerned with the residual process after removing the trend. Plot a simulated fake time series, the SACF from the fake time series, and compare the results to those that you can find in the paper in Figure 3. How are your results similar or different from their results? Simulate a second series and discuss the differences in your two simulations.}
+
+\item%7
+{\it Use R to find the roots of your selected AR(2) model based on their published coefficients and note what that tells you about the properties of the AR(2) process under consideration.}
+
+\end{enumerate}
+
+
+\appendix
+\section*{R Code}
+
+
+\end{document}
