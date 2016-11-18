@@ -45,6 +45,10 @@ This should be done in groups of up to 3. You will lose 2\% if you do not work i
 \item%3
 {\it Figure 3 contains two ACF plots. Discuss the patterns in the two SACFs (left two panels of Figure 3).}
 
+% $\delta^{13}C$ is the ratio of the plant's carbon-13 to carbon-12 ratio to a standard carbon-13 to carbon-12 ration, expressed as a permil...
+
+Figure 3 shows the SACF plots for the mean $\delta^{13}C$ series for Douglas fir and western white pine. Both SACF plots exhibit decaying oscillations indicative of AR(2) autocorrelation. Both plots have a large lag 2 correlation (exceeding the $\alpha=0.05$ bounds). The western white pine SACF has a large lag 1 correlation, implying that consecutive years have similar mean $\delta^{13}C$. In contrast, the Douglas fir SACF has a small lag 1 correlation, suggesting more complicated behavior where the mean $\delta^{13}C$ is related to the mean $\delta^{13}C$ from two years prior, but consecutive means are not so strongly related.
+
 \item%4
 {\it Note that their bounds for testing in Figure 3 are different from the formula provided in the book -- we will discuss the modification I think they used later. What is the sample size (length of time series!) for the mean douglas-fir and mean western white pine time series. Based on these sample sizes, what cut-offs would you plot on Figure 3 based on the approximate result we discussed in class? How do theirs differ?}
 
