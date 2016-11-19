@@ -52,8 +52,32 @@ Figure 3 shows the SACF plots for the mean $\delta^{13}C$ series for Douglas fir
 \item%4
 {\it Note that their bounds for testing in Figure 3 are different from the formula provided in the book -- we will discuss the modification I think they used later. What is the sample size (length of time series!) for the mean douglas-fir and mean western white pine time series. Based on these sample sizes, what cut-offs would you plot on Figure 3 based on the approximate result we discussed in class? How do theirs differ?}
 
+Table 2 shows that the mean Douglas fir series has data for 85 years and the mean white pine series includes data from 77 years. On the SACF plot, we would use the cutoffs
+$$
+\pm\frac{2}{\sqrt{85}} = \pm\Sexpr{signif(2/sqrt(85), 3)}
+$$
+for the mean Douglas fir series and
+$$
+\pm\frac{2}{\sqrt{77}} = \pm\Sexpr{signif(2/sqrt(77), 3)}
+$$
+for the mean white pine series. Rather than using these constant values, the cut-offs in Figure 3 generally increase for larger lags, probably to account for the lower number of pairs used to estimate the sample autocorrelation at larger lags.
+
 \item%5
 {\it We discussed four different reasons for doing time series modeling at the beginning of the semester (pages 1 and 2 of lecture notes). Of those four reasons, which one does their use of ARMA models fall into and why? There may be multiple choices that are reasonable here, so the argument you make is important. I am not talking about what you could do with their models, just what they did do with them and their reason for employing them.}
+
+Mark's answer choices are:
+
+\begin{itemize}
+
+\item description/underestanding
+
+\item accomodation
+
+\item monitoring/control
+
+\item forecasting
+
+\end{itemize}
 
 \item%6
 {\it Use \texttt{arima.sim} to simulate from Delta response AR(2) models for either the mean D or mean W discussed in Table 4 generating the same number of observations as in their time series (see Table 2). You can use a standard deviation for the white noise process of 0.4. This simulation is just concerned with the residual process after removing the trend. Plot a simulated fake time series, the SACF from the fake time series, and compare the results to those that you can find in the paper in Figure 3. How are your results similar or different from their results? Simulate a second series and discuss the differences in your two simulations.}
