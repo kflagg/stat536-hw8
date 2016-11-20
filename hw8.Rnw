@@ -45,7 +45,7 @@ This should be done in groups of up to 3. You will lose 2\% if you do not work i
 \item%3
 {\it Figure 3 contains two ACF plots. Discuss the patterns in the two SACFs (left two panels of Figure 3).}
 
-% $\delta^{13}C$ is the ratio of the plant's carbon-13 to carbon-12 ratio to a standard carbon-13 to carbon-12 ration, expressed as a permil...
+% $\delta^{13}C$ is the ratio of the plant's carbon-13 to carbon-12 ratio to a standard carbon-13 to carbon-12 ratio, expressed as a permil...
 
 Figure 3 shows the SACF plots for the mean $\delta^{13}C$ series for Douglas fir and western white pine. Both SACF plots exhibit decaying oscillations indicative of AR(2) autocorrelation. Both plots have a large lag 2 correlation (exceeding the $\alpha=0.05$ bounds). The western white pine SACF has a large lag 1 correlation, implying that consecutive years have similar mean $\delta^{13}C$. In contrast, the Douglas fir SACF has a small lag 1 correlation, suggesting more complicated behavior where the mean $\delta^{13}C$ is related to the mean $\delta^{13}C$ from two years prior, but consecutive means are not so strongly related.
 
@@ -60,24 +60,24 @@ for the mean Douglas fir series and
 $$
 \pm\frac{2}{\sqrt{77}} = \pm\Sexpr{signif(2/sqrt(77), 3)}
 $$
-for the mean white pine series. Rather than using these constant values, the cut-offs in Figure 3 generally increase for larger lags, probably to account for the lower number of pairs used to estimate the sample autocorrelation at larger lags.
+for the mean white pine series. Rather than using these constant values, the cut-offs in Figure 3 generally increase for larger lags, presumably to account for the lower number of pairs used to estimate the sample autocorrelation at larger lags.
 
 \item%5
 {\it We discussed four different reasons for doing time series modeling at the beginning of the semester (pages 1 and 2 of lecture notes). Of those four reasons, which one does their use of ARMA models fall into and why? There may be multiple choices that are reasonable here, so the argument you make is important. I am not talking about what you could do with their models, just what they did do with them and their reason for employing them.}
 
-Mark's answer choices are:
+Monserud and Marshall use ARMA models to describe and understand the trends in carbon isotope ratios. They are interested in ``lagged physiological effects that persist for longer than the current year'' (p~1087) and their discussion section links the observed trends and dependence structure to biological theory. The bigger picture for this research is that scientists will need to accommodate dependency in models used for forecasting or exploring the relationships between carbon isotope levels and various predictors, but in this study the authors focus on explicating the trends and dependence structures that may be useful in such models.
 
-\begin{itemize}
+%\begin{itemize}
 
-\item description/underestanding
+%\item description/underestanding --- They're interested in ``lagged physiological effects that persist for longer than the current year''. Also ``Little is known about the stochastic properties of $\delta^{13}C$ over the lifetime of forest-grown trees.'' Their discussion links the observed trends and dependence structure to biological theory. They point out that the structures that best describe most of the trees in their sample are relatively simple, with one correlation parameter.
 
-\item accomodation
+%\item accomodation --- No, the autocorrelation structure is their focus. They use only simple trends in time and don't have other predictors. But the bigger picture is that temporal dependence affects forecasting and inference so they want to explicate the structures that may be useful in modeling for various purposes.
 
-\item monitoring/control
+%\item monitoring/control --- No?
 
-\item forecasting
+%\item forecasting --- Again, bigger picture...
 
-\end{itemize}
+%\end{itemize}
 
 \item%6
 {\it Use \texttt{arima.sim} to simulate from Delta response AR(2) models for either the mean D or mean W discussed in Table 4 generating the same number of observations as in their time series (see Table 2). You can use a standard deviation for the white noise process of 0.4. This simulation is just concerned with the residual process after removing the trend. Plot a simulated fake time series, the SACF from the fake time series, and compare the results to those that you can find in the paper in Figure 3. How are your results similar or different from their results? Simulate a second series and discuss the differences in your two simulations.}
