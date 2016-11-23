@@ -37,10 +37,20 @@ This should be done in groups of up to 3. You will lose 2\% if you do not work i
 \begin{enumerate}
 
 \item%1
-{\it What do they provide for a reason for removing the quadratic trend? Why do they want to use a trend model with limited flexibility?}
+{\it What do they provide for a reason for removing the quadratic trend? Why do they want to use a trend model with limited flexibility?}  
+
+The authors fit both a linear and a quadratic trend to the original data, with the residuals from both fits having a constant mean and variance. They then ``used standard statistical procedures (e.g., t-test) to decide between the linear and quadratic forms." Supposedly, from this t-test the p-value for the quadratic trend was deemed ``too high" and the trend was removed. The authors describe that ``care
+should be taken to describe and remove the trend in the data over time", with the goal of ``goal is to isolate the influence of climate on tree growth". The authors describe the cautioning in fitting trends so that one ``remove(s) just enough of the trend so that the residuals are stationary, without heavy-handedly removing the additional information (underlying signal) we seek to analyze". 
+
+
+
 
 \item%2
-{\it How do they determine the order of the trend model from none to quadratic? Are there any potential criticisms of the way they do this? Do not discuss the potential issue with doing these tests without accounting for potential autocorrelation -- we know that the SEs would change if these tests were conducted using models that account for autocorrelation.}
+{\it How do they determine the order of the trend model from none to quadratic? Are there any potential criticisms of the way they do this? Do not discuss the potential issue with doing these tests without accounting for potential autocorrelation -- we know that the SEs would change if these tests were conducted using models that account for autocorrelation.}  
+
+The authors determine the order of the trend in the model by fitting a quadratic trend, and using a t-test, with $\alpha = 0.05$, to determine if that term is ``necessary" in the trend model. They determine the ``significant" trends for each of the trees, as well as the mean of the species, for each of the three responses of interest ($\delta_p, \frac{c_i}{c_a},\text{ and}, \Delta$). The authors described in the \emph{Gas Exchange Variables} section, the dependence of each of these three responses on each other, ``these series are not independent of each other. The ratio $\frac{c_i}{c_a}$ is directly proportional to the difference $\delta_a - \delta_p$, and $\Delta$ is dominated by the numerator $\delta_a - \delta_p$. Thus, we can conclude that the time series properties ... will be almost identical, because the variates differ only be a factor of proportionality."  
+
+Hence, the reader should be cautious of testing for trends for each of the different variables ($\delta_p, \frac{c_i}{c_a}, c_a - c_i (\text{tree-ring}), c_a - c_i (\text{leaf}), \text{ and}, \Delta$), as they are all related to one another. The result is a total of 15 tests for trends per tree, where each test is dependent on the others. This will result in a spurious detection of a \emph{false} trend about once per tree, which can be seen in the the results in \emph{Table 2}. For example, tree D102 has different terms included in the trend model for each of the different response variables, $\delta_p, \frac{c_i}{c_a},\text{ and}, c_i - c_a.$ As these variables are directly proportional to one another, the same time trend should describe each of the responses, eliminating the need for multiple testing of the trends for each response, and a large resulting false detection rate.  
 
 \item%3
 {\it Figure 3 contains two ACF plots. Discuss the patterns in the two SACFs (left two panels of Figure 3).}
@@ -50,7 +60,7 @@ This should be done in groups of up to 3. You will lose 2\% if you do not work i
 Figure 3 shows the SACF plots for the mean $\delta^{13}C$ series for Douglas fir and western white pine. Both SACF plots exhibit decaying oscillations indicative of AR(2) autocorrelation. Both plots have a large lag 2 correlation (exceeding the $\alpha=0.05$ bounds). The western white pine SACF has a large lag 1 correlation, implying that consecutive years have similar mean $\delta^{13}C$. In contrast, the Douglas fir SACF has a small lag 1 correlation, suggesting more complicated behavior where the mean $\delta^{13}C$ is related to the mean $\delta^{13}C$ from two years prior, but consecutive means are not so strongly related.
 
 \item%4
-{\it Note that their bounds for testing in Figure 3 are different from the formula provided in the book -- we will discuss the modification I think they used later. What is the sample size (length of time series!) for the mean douglas-fir and mean western white pine time series. Based on these sample sizes, what cut-offs would you plot on Figure 3 based on the approximate result we discussed in class? How do theirs differ?}
+{\it Note that their bounds for testing in Figure 3 are different from the formula provided in the book -- we will discuss the modification I think they used later. What is the sample size (length of time series!) for the mean Douglas-fir and mean western white pine time series. Based on these sample sizes, what cut-offs would you plot on Figure 3 based on the approximate result we discussed in class? How do theirs differ?}
 
 Table 2 shows that the mean Douglas fir series has data for 85 years and the mean white pine series includes data from 77 years. On the SACF plot, we would use the cutoffs
 $$
