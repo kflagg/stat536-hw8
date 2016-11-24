@@ -75,11 +75,113 @@ for the mean white pine series. Rather than using these constant values, the cut
 \item%5
 {\it We discussed four different reasons for doing time series modeling at the beginning of the semester (pages 1 and 2 of lecture notes). Of those four reasons, which one does their use of ARMA models fall into and why? There may be multiple choices that are reasonable here, so the argument you make is important. I am not talking about what you could do with their models, just what they did do with them and their reason for employing them.}
 
+Four reasons for doing time series:
+
+\begin{enumerate}
+\item Description/Understanding
+
+\item Acommodation
+
+\item Monitoring/Control
+
+\item Forcasting
+\end{enumerate}
+
+Because the authors' main focus seems to be on describing the trends over time, I would say the main reasons the authors' did time series modelling falls in to the Description/Understanding category. In the summary section, the authors emphasize that the residuals of an appropriate ARMA model will satisfy the independence assumption and that hypothesis tests yield biased results when ``significant" autocorrelation is present but not accounted for.
+
+The remainder of the paper proceeds to desribe AR and MA models, look at visual diagnostics for these types of models, and discuss the trends that were estimated.
+
 \item%6
-{\it Use \texttt{arima.sim} to simulate from Delta response AR(2) models for either the mean D or mean W discussed in Table 4 generating the same number of observations as in their time series (see Table 2). You can use a standard deviation for the white noise process of 0.4. This simulation is just concerned with the residual process after removing the trend. Plot a simulated fake time series, the SACF from the fake time series, and compare the results to those that you can find in the paper in Figure 3. How are your results similar or different from their results? Simulate a second series and discuss the differences in your two simulations.}
+{\it Use \texttt{arima.sim} to simulate from Delta response AR(2) models for either the mean D or mean W discussed in Table 4 generating the same number of observations as in their time series (see Table 2). You can use a standard deviation for the white noise process of 0.4. This simulation is just concerned with the residual process after removing the trend.}
+
+{\bf Doublas-fir $\Delta$ AR(2) models}
+<<prob6.dar2>>=
+# mean d has 85 years, n = 85
+# use 0.4 for sd
+# get ar components from table 5
+
+set.seed(53608)
+dar2 <- arima.sim(n = 85, list(ar = c(0.06,0.32)), sd = 0.4)
+
+
+@
+{\bf which delta does he mean? $\delta_{p}$ or $\Delta$??}
+
+{\it Plot a simulated fake time series, the SACF from the fake time series, and compare the results to those that you can find in the paper in Figure 3.}
+
+<<prob6.plots>>=
+plot(dar2, ylab = "AR2 Simulation Residuals", main = "Douglas-fir")
+
+acf(dar2, main = "Douglas-fir AR2", ylab = "SACF")
+
+@
+
+\begin{center}
+{\bf Figure 3}
+\includegraphics[scale = 0.75]{douglas_acf}
+\end{center}
+
+The SACF shows a significant correlation at lag 2. The ACF showed a significant correlation at lag 2 and approaching significant correlations at lags 5 and 8.
+
+
+{\it How are your results similar or different from their results?}
+
+In terms of the correlations at lags 2, the results are similar, both suggesting a significant correlation. Successive patterns in significant correlations are different between the SACF and ACF plots. In the ACF plot, lags 5 and 8 appear to almost have significant correlations while in the SACF, lag 9 is nearing having a significant correlation with subsequent spurious correlations that are almost significant also appearing.
+
+
+{\it Simulate a second series and discuss the differences in your two simulations.}
+
+<<prob6.dar2x>>=
+
+dar2_2 <- arima.sim(n = 85, list(ar = c(0.06,0.32)), sd = 0.4)
+
+plot(dar2_2, ylab = "AR2 Second Simulation Residuals", main = "Douglas-fir")
+
+acf(dar2_2, main = "Douglas-fir Second AR2", ylab = "SACF")
+
+@
+The first plot of the simulation residuals shows a more apparent positive autocorrelation pattern, although not strong, as residuals at time points closer together are more similar in sign. There appears to be more extreme spikes either positive or negative occuring every 15 to 20 time points out.
+
+The second plot of simulation residuals has much more extreme subsequent simulated residuals although the positive autocorrelation is still apparent. The more extreme spikes still appear every 15 to 20 time points out until around time lag 60, at which time, a increasing positive overall trend is seen until the end of the time series.
+
+Both plots of simulated residuals look quite rough.
+
+In terms of SACF plots, the first simulation showed a significant correlation at lag 2, while the only significant correlation (that is possibly not spurious) is at lag 8.
 
 \item%7
 {\it Use R to find the roots of your selected AR(2) model based on their published coefficients and note what that tells you about the properties of the AR(2) process under consideration.}
+
+<<prob7>>=
+# change parameter estimates here also depending on the delta he means
+ar2_roots <- data.frame(polyroot(c(1,0.06,0.32)))
+colnames(ar2_roots) <- "Roots"
+
+ar2_roots
+@
+
+{\bf Please verify this part.}
+
+Since there are complex roots, the process has a quasi-perodic structure. The quasi-period is given by $\frac{2\pi}{\bigodot}$ where cos($\bigodot$) = $\frac{\phi_{1}}{2(-\phi_{2})^{-{\frac{1}{2}}}}$
+{\bf but this will yield a negative square root -- thoughts}
+
+Note that $\phi_{1}$ = 0.06 and $\phi_{2}$ = 0.32. The AR(2) process is stationary if:
+
+\begin{itemize}
+\item $\phi_{1} + \phi_{2} <$ 1
+
+0.06 + 0.32 = 0.38 $<$ 1
+
+\item $\phi_{2} - \phi_{1} <$ 1 
+
+0.32 - 0.06 = 0.26
+
+\item $|\phi_{2}| <$ 1
+
+0.32 $<$ 1
+\end{itemize}
+
+Therefore, the process is stationary.
+
 
 \end{enumerate}
 
