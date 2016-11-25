@@ -153,6 +153,8 @@ In terms of SACF plots, the first simulation showed a significant correlation at
 
 <<prob7>>=
 # change parameter estimates here also depending on the delta he means
+# Should be polyroot(c(1, -0.06, -0.32))
+# See CC page 71 or Mark's notes page 9 -- The coefficients of the polynomial are the negative phi values
 ar2_roots <- data.frame(polyroot(c(1,0.06,0.32)))
 colnames(ar2_roots) <- "Roots"
 
