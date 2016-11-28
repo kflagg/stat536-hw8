@@ -72,29 +72,15 @@ $$
 $$
 for the mean white pine series. Rather than using these constant values, the cut-offs in Figure 3 generally increase for larger lags, presumably to account for the lower number of pairs used to estimate the sample autocorrelation at larger lags.
 
+\pagebreak
 \item%5
 {\it We discussed four different reasons for doing time series modeling at the beginning of the semester (pages 1 and 2 of lecture notes). Of those four reasons, which one does their use of ARMA models fall into and why? There may be multiple choices that are reasonable here, so the argument you make is important. I am not talking about what you could do with their models, just what they did do with them and their reason for employing them.}
 
-Four reasons for doing time series:
-
-\begin{enumerate}
-\item Description/Understanding
-
-\item Accommodation
-
-\item Monitoring/Control
-
-\item Forcasting
-\end{enumerate}
-
-Because the authors' main focus seems to be on describing the trends over time, I would say the main reasons the authors' did time series modelling falls in to the Description/Understanding category. In the summary section, the authors emphasize that the residuals of an appropriate ARMA model will satisfy the independence assumption and that hypothesis tests yield biased results when ``significant" autocorrelation is present but not accounted for.
-
-The remainder of the paper proceeds to desribe AR and MA models, look at visual diagnostics for these types of models, and discuss the trends that were estimated.
+Monserud and Marshall use ARMA models to describe and understand the trends in carbon isotope ratios. In the summary section, the authors emphasize that the residuals of an appropriate ARMA model will satisfy the independence assumption and that hypothesis tests yield biased results when ``significant" autocorrelation is present but not accounted for. The remainder of the paper proceeds to desribe AR and MA models, look at visual diagnostics for these types of models, and discuss the trends that were estimated in the context of biological theory. The bigger picture for this research is that scientists will need to accommodate dependency in models used for forecasting or exploring the relationships between carbon isotope levels and various predictors, but in this study the authors focus on explicating the trends and dependence structures that may be useful in such models.
 
 \item%6
 {\it Use \texttt{arima.sim} to simulate from Delta response AR(2) models for either the mean D or mean W discussed in Table 4 generating the same number of observations as in their time series (see Table 2). You can use a standard deviation for the white noise process of 0.4. This simulation is just concerned with the residual process after removing the trend.}
 
-{\bf Doublas-fir $\Delta$ AR(2) models}
 <<prob6.dar2>>=
 # mean d has 85 years, n = 85
 # use 0.4 for sd
@@ -105,7 +91,6 @@ dar2 <- arima.sim(n = 85, list(ar = c(0.06,0.32)), sd = 0.4)
 
 
 @
-{\bf which delta does he mean? $\delta_{p}$ or $\Delta$??}
 
 {\it Plot a simulated fake time series, the SACF from the fake time series, and compare the results to those that you can find in the paper in Figure 3.}
 
@@ -185,8 +170,20 @@ Therefore, the process is stationary.
 \end{enumerate}
 
 
+\pagebreak
 \appendix
 \section*{R Code}
 
+\subsection*{Problem 6}
+<<prob6.dar2, eval = FALSE, echo = TRUE>>=
+@
+<<prob6.plots, eval = FALSE, echo = TRUE>>=
+@
+<<prob6.dar2x, eval = FALSE, echo = TRUE>>=
+@
+
+\subsection*{Problem 7}
+<<prob7, eval = FALSE, echo = TRUE>>=
+@
 
 \end{document}
