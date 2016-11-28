@@ -80,7 +80,7 @@ Four reasons for doing time series:
 \begin{enumerate}
 \item Description/Understanding
 
-\item Acommodation
+\item Accommodation
 
 \item Monitoring/Control
 
@@ -155,18 +155,15 @@ In terms of SACF plots, the first simulation showed a significant correlation at
 # change parameter estimates here also depending on the delta he means
 # Should be polyroot(c(1, -0.06, -0.32))
 # See CC page 71 or Mark's notes page 9 -- The coefficients of the polynomial are the negative phi values
-ar2_roots <- data.frame(polyroot(c(1,0.06,0.32)))
+ar2_roots <- data.frame(polyroot(c(1,-0.06,-0.32)))
 colnames(ar2_roots) <- "Roots"
 
 ar2_roots
 @
 
-{\bf Please verify this part.}
+Since the roots are not complex, there is not a quasi-periodic structure.re are complex roots, the process has a quasi-perodic structure. 
 
-Since there are complex roots, the process has a quasi-perodic structure. The quasi-period is given by $\frac{2\pi}{\bigodot}$ where cos($\bigodot$) = $\frac{\phi_{1}}{2(-\phi_{2})^{-{\frac{1}{2}}}}$
-{\bf but this will yield a negative square root -- thoughts}
-
-Note that $\phi_{1}$ = 0.06 and $\phi_{2}$ = 0.32. The AR(2) process is stationary if:
+Note that $\phi_{1}$ = 0.06 and $\phi_{2}$ = 0.32. The AR(2) process is stationary iff:
 
 \begin{itemize}
 \item $\phi_{1} + \phi_{2} <$ 1
