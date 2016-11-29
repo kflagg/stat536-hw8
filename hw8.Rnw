@@ -146,7 +146,7 @@ colnames(ar2_roots) <- "Roots"
 ar2_roots
 @
 
-Since the roots are not complex, there is not a quasi-periodic structure.re are complex roots, the process has a quasi-periodic structure. 
+Since the roots are not complex, there is not a quasi-periodic structure.
 
 Note that $\phi_{1}$ = 0.06 and $\phi_{2}$ = 0.32. The AR(2) process is stationary iff:
 
